@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Microfrontends</title>
+  <meta name="importmap-type" content="systemjs-importmap" />
+
+  <!--Common Javascript and CSS for all the applications-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+  <!--Common Javascript and CSS for all the applications-->
+  <% if (isLocal==='development') { %>
+  <script type="systemjs-importmap">
+   {
+  "imports": {
+    "@vue-SPA/root-config": "/vue-mf-root-config.js",
+    "single-spa": "/node_modules/single-spa/lib/system/single-spa.min.js",
+    "@vue-SPA/navbar": "../navbar/dist/navbar.js",
+    "vue": "/node_modules/vue/dist/vue.min.js",
+    "application_1": "https://localhost:3001/index_bundle.js",
+    "application_2": "https://localhost:3002/index_bundle.js",
+    "@vue-SPA/navbar": "../navbar/dist/navbar.js",
+    "vue-router": "/node_modules/vue-router/dist/vue-router.min.js"
+  }
+}
+  </script>
+  <% } %><% if (isLocal==='production') { %>
+  <script type="systemjs-importmap">
+     {
+    "imports": {
+      "@vue-SPA/root-config": "/vue-mf-root-config.js",
+      "single-spa": "/node_modules/single-spa/lib/system/single-spa.min.js",
+      "@vue-SPA/navbar": "../navbar/dist/navbar.js",
+      "vue": "/node_modules/vue/dist/vue.min.js",
+      "application_1": "https://localhost:3001/index_bundle.js",
+      "application_2": "https://localhost:3002/index_bundle.js",
+      "@vue-SPA/navbar": "../navbar/dist/navbar.js",
+      "vue-router": "/node_modules/vue-router/dist/vue-router.min.js"
+    }
+  }
+    </script>
+  <% } %>
+  <script src="/node_modules/import-map-overrides/dist/import-map-overrides.js"></script>
+  <script src="/node_modules/systemjs/dist/system.js"></script>
+  <script src="/node_modules/systemjs/dist/extras/amd.js"></script>
+  <script src="/node_modules/systemjs/dist/extras/named-exports.js"></script>
+</head>
+
+<body>
+  <script>
+    System.import('@vue-SPA/root-config');
+  </script>
+  <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+</body>
+
+</html>

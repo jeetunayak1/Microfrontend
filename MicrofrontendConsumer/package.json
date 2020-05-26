@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server --https --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
+    "build:navbar": "npm run-script build --prefix navbar"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-eslint": "^11.0.0-beta.2",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.0.2",
+    "css-loader": "^3.4.2",
+    "dotenv-webpack": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "serve": "^11.2.0",
+    "vue-loader": "^15.9.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "import-map-overrides": "^1.14.3",
+    "single-spa": "^5.3.1",
+    "systemjs": "^6.2.6",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6"
+  }
+}
